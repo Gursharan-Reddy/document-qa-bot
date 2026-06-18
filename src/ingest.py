@@ -129,8 +129,6 @@ def build_vector_pipeline():
 
     print("Generating embeddings and storing locally in ChromaDB...")
     
-    # Strategy: Smaller batch windows (25 items) combined with a steady 6-second delay
-    # ensures total alignment with the Gemini Free Tier Rate Limits.
     BATCH_SIZE = 25
     for i in tqdm(range(0, len(chunks), BATCH_SIZE)):
         batch_end = min(i + BATCH_SIZE, len(chunks))

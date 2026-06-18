@@ -22,14 +22,12 @@ class GeminiModernEmbeddingFunction:
 def execute_rag_query(user_query: str, k: int = 4) -> dict:
     chroma_client = chromadb.PersistentClient(path=config.DB_DIR)
     
-    # Initialize our custom embedder directly
     embedder = GeminiModernEmbeddingFunction(
         api_key=config.GEMINI_API_KEY,
         model_name=config.EMBEDDING_MODEL
     )
 
     try:
-        # Load the raw collection without an internal embedding function to prevent conflicts
         collection = chroma_client.get_collection(name=config.COLLECTION_NAME)
     except Exception:
         return {
@@ -37,10 +35,8 @@ def execute_rag_query(user_query: str, k: int = 4) -> dict:
             "citations": [], "raw_context": []
         }
 
-    # Step 1: Manually turn the user's natural language string into a vector
     query_embeddings = embedder([user_query])
 
-    # Step 2: Query ChromaDB using the raw numerical vector instead of text
     results = collection.query(
         query_embeddings=query_embeddings,
         n_results=k

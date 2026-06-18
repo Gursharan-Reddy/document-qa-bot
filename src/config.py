@@ -5,7 +5,6 @@ load_dotenv()
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-# Fix: Update model to the standard model identifier for the new GenAI SDK
 EMBEDDING_MODEL = "gemini-embedding-2"
 LLM_MODEL = "gemini-2.5-flash"
 
