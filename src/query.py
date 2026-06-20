@@ -1,12 +1,12 @@
 import os
 import sys
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from google import genai
 from google.genai import types
 import chromadb
-import config
-from src import config
+import config  
 
 class GeminiModernEmbeddingFunction:
     def __init__(self, api_key: str, model_name: str):

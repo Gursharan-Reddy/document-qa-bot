@@ -1,7 +1,9 @@
 import os
 import sys
 import time
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 import chromadb
 from pypdf import PdfReader
 from docx import Document
@@ -9,7 +11,7 @@ from tqdm import tqdm
 from google import genai
 from google.genai import types
 from chromadb.api.types import EmbeddingFunction, Documents, Embeddings
-from src import config
+import config  
 
 class GeminiModernEmbeddingFunction(EmbeddingFunction):
     def __init__(self, api_key: str, model_name: str):
