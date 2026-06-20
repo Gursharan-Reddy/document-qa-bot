@@ -7,7 +7,7 @@ from tqdm import tqdm
 from google import genai
 from google.genai import types
 from chromadb.api.types import EmbeddingFunction, Documents, Embeddings
-import config
+from src import config
 
 class GeminiModernEmbeddingFunction(EmbeddingFunction):
     def __init__(self, api_key: str, model_name: str):

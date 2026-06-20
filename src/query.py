@@ -2,6 +2,7 @@ from google import genai
 from google.genai import types
 import chromadb
 import config
+from src import config
 
 class GeminiModernEmbeddingFunction:
     def __init__(self, api_key: str, model_name: str):
