@@ -1,5 +1,7 @@
 import os
-import time  
+import sys
+import time
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import chromadb
 from pypdf import PdfReader
 from docx import Document
